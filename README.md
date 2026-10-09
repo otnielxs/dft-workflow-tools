@@ -65,6 +65,9 @@ Run `pw.x` for several `ecutwfc` values, put the outputs in one folder, then:
 dftwf converge examples/si/convergence --threshold 0.1 \
     --csv convergence.csv --plot convergence.png
 ```
+Output:
+
+```text
 file                  ecutwfc (Ry)            E (Ry)   dE (meV/atom)  status
 scf_40.out                      40      -93.41380748               -  ok
 scf_50.out                      50      -93.41390154          0.6399  ok
@@ -73,6 +76,7 @@ scf_70.out                      70      -93.41393301          0.0788  ok
 scf_80.out                      80      -93.41394229          0.0631  ok
 
 Converged at ecutwfc = 70 Ry (threshold 0.1 meV/atom).
+```
 
 or from Python:
 
