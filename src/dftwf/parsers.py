@@ -114,3 +114,26 @@ def read_dos(filepath):
     if data.shape[1] < 2:
         raise ValueError(f"DOS file must have at least 2 columns: {filepath}")
     return data[:, 0], data[:, 1]
+
+
+import re
+
+
+def get_number_of_atoms(filepath):
+    """Return the number of atoms per cell printed by pw.x, or None if absent."""
+    with open(filepath, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            match = re.search(r"number of atoms/cell\s*=\s*(\d+)", line)
+            if match:
+                return int(match.group(1))
+    return None
+
+
+def get_ecutwfc(filepath):
+    """Return the wavefunction cutoff (Ry) printed by pw.x, or None if absent."""
+    with open(filepath, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            match = re.search(r"kinetic-energy cutoff\s*=\s*([0-9.]+)\s*Ry", line)
+            if match:
+                return float(match.group(1))
+    return None
