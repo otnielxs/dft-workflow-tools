@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml)
 
-Lightweight Python tools for Quantum ESPRESSO (QE) DFT workflows: parse `pw.x`
+Python tools for Quantum ESPRESSO (QE) workflows: parse `pw.x`
 outputs, read band structure and DOS data, and make publication-ready plots.
 Dependencies are kept minimal (`numpy`, `matplotlib`).
 
@@ -18,8 +18,8 @@ Dependencies are kept minimal (`numpy`, `matplotlib`).
 ## Installation
 
 ````bash
-git clone https://github.com/otnielxs/dft-workflow-tools.git
-cd dft-workflow-tools
+git clone https://github.com/otnielxs/qe-workflow-tools.git
+cd qe-workflow-tools
 pip install -e ".[dev]"
 ````
 
