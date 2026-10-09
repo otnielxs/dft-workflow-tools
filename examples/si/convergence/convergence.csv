@@ -1,0 +1,6 @@
+file,ecutwfc_ry,n_atoms,total_energy_ry,delta_mev_per_atom,valid
+scf_si_40.out,40.0,2,-93.41380748,,True
+scf_si_50.out,50.0,2,-93.41390154,0.639876,True
+scf_si_60.out,60.0,2,-93.41392143,0.135309,True
+scf_si_70.out,70.0,2,-93.41393301,0.078777,True
+scf_si_80.out,80.0,2,-93.41394229,0.063130,True
