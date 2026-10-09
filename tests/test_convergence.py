@@ -17,7 +17,7 @@ CONV = ROOT / "examples" / "si" / "convergence"
 
 
 def test_parse_ecut_and_atoms():
-    out = str(CONV / "scf_si_40.out")
+    out = str(CONV / "scf_40.out")
     assert get_ecutwfc(out) == pytest.approx(40.0)
     assert get_number_of_atoms(out) == 2
 
@@ -42,9 +42,9 @@ def test_find_converged(threshold, expected):
 
 
 def test_unfinished_job_is_invalid(tmp_path):
-    for src in CONV.glob("scf_si_*.out"):
+    for src in CONV.glob("scf_*.out"):
         text = src.read_text()
-        if src.name == "scf_si_80.out":
+        if src.name == "scf_80.out":
             text = "\n".join(
                 line for line in text.splitlines() if "JOB DONE" not in line
             )
@@ -52,7 +52,7 @@ def test_unfinished_job_is_invalid(tmp_path):
 
     points = collect_ecut_results(tmp_path)
     invalid = [p for p in points if not p.valid]
-    assert [p.file for p in invalid] == ["scf_si_80.out"]
+    assert [p.file for p in invalid] == ["scf_80.out"]
     assert find_converged(points, threshold_mev=0.1) == 70.0
 
 
