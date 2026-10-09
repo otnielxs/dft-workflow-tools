@@ -1,4 +1,3 @@
-"""Command-line interface for dft-workflow-tools."""
 from __future__ import annotations
 
 import argparse
