@@ -13,6 +13,7 @@ Dependencies are kept minimal (`numpy`, `matplotlib`).
 - Read band structure (`bands.dat.gnu`) and DOS data
 - Read high-symmetry k-points and labels from `crystal_b` k-path inputs
 - Combined band structure + DOS plot with `plot_band_dos`
+- Cutoff-energy convergence analysis (CSV table, plot, `dftwf converge` command)
 - Unit tests built on real QE outputs
 
 ## Installation
@@ -56,6 +57,35 @@ Or run `python examples/si/run_example.py`, or open `examples/si/demo.ipynb`.
 > Quantum ESPRESSO pseudopotential library to rerun the calculations
 > from the `.in` files.
 
+## Convergence test (cutoff energy)
+
+Run `pw.x` for several `ecutwfc` values, put the outputs in one folder, then:
+
+```bash
+dftwf converge examples/si/convergence --threshold 0.1 \
+    --csv convergence.csv --plot convergence.png
+```
+
+or from Python:
+
+```python
+from dftwf.convergence import analyze_ecut
+
+points, converged = analyze_ecut(
+    "examples/si/convergence",
+    threshold_mev=0.1,
+    csv_path="convergence.csv",
+    plot_path="convergence.png",
+)
+print("Converged at ecutwfc =", converged, "Ry")
+```
+
+A cutoff counts as converged when every energy step from that point onward is
+below the threshold (in meV/atom). Runs that did not finish or did not converge
+are flagged as invalid and excluded from the analysis.
+
+![Si ecutwfc convergence](examples/si/convergence/convergence.png)
+
 ## Units
 
 Total energies are returned in Rydberg (Ry) and Fermi energies in electronvolt (eV),
@@ -64,7 +94,7 @@ exactly as printed by QE.
 ## Project structure
 
 ````
-src/dftwf/      parsers.py, kpath.py, plotting.py
+src/dftwf/      parsers.py, kpath.py, plotting.py, convergence.py, cli.py
 tests/          unit tests and fixtures
 examples/si/    silicon example (QE inputs/outputs, script, notebook)
 ````
