@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "qe-workflow-tools"
-version = "0.1.0"
+version = "0.2.0"
 description = "Lightweight Python tools for Quantum ESPRESSO DFT workflows"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -26,3 +26,6 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.scripts]
+dftwf = "dftwf.cli:main"
