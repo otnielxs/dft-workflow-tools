@@ -84,8 +84,6 @@ A cutoff counts as converged when every energy step from that point onward is
 below the threshold (in meV/atom). Runs that did not finish or did not converge
 are flagged as invalid and excluded from the analysis.
 
-![Si ecutwfc convergence](examples/si/convergence/convergence.png)
-
 ## Units
 
 Total energies are returned in Rydberg (Ry) and Fermi energies in electronvolt (eV),
