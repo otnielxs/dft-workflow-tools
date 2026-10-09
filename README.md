@@ -1,6 +1,6 @@
 # qe-workflow-tools
 
-[![tests](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml)
+[![tests](https://github.com/otnielxs/qe-workflow-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/otnielxs/qe-workflow-tools/actions/workflows/tests.yml)
 
 Python tools for Quantum ESPRESSO (QE) workflows: parse `pw.x`
 outputs, read band structure and DOS data, and make publication-ready plots.
