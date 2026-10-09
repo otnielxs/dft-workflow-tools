@@ -1,0 +1,28 @@
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dft-workflow-tools"
+version = "0.1.0"
+description = "Lightweight Python tools for Quantum ESPRESSO DFT workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Otniel Sitepu" }
+]
+dependencies = [
+    "numpy",
+    "matplotlib"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "jupyter"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
