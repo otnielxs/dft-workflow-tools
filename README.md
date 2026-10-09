@@ -1,4 +1,4 @@
-# dft-workflow-tools
+# qe-workflow-tools
 
 [![tests](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/otnielxs/dft-workflow-tools/actions/workflows/tests.yml)
 
