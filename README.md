@@ -21,7 +21,7 @@ Dependencies are kept minimal (`numpy`, `matplotlib`).
 ````bash
 git clone https://github.com/otnielxs/qe-workflow-tools.git
 cd qe-workflow-tools
-pip install -e ".[dev]"
+python -m pip install -e ".[dev]"
 ````
 
 Requires Python 3.10 or newer.
@@ -65,6 +65,14 @@ Run `pw.x` for several `ecutwfc` values, put the outputs in one folder, then:
 dftwf converge examples/si/convergence --threshold 0.1 \
     --csv convergence.csv --plot convergence.png
 ```
+file                  ecutwfc (Ry)            E (Ry)   dE (meV/atom)  status
+scf_40.out                      40      -93.41380748               -  ok
+scf_50.out                      50      -93.41390154          0.6399  ok
+scf_60.out                      60      -93.41392143          0.1353  ok
+scf_70.out                      70      -93.41393301          0.0788  ok
+scf_80.out                      80      -93.41394229          0.0631  ok
+
+Converged at ecutwfc = 70 Ry (threshold 0.1 meV/atom).
 
 or from Python:
 
@@ -82,7 +90,7 @@ print("Converged at ecutwfc =", converged, "Ry")
 
 A cutoff counts as converged when every energy step from that point onward is
 below the threshold (in meV/atom). Runs that did not finish or did not converge
-are flagged as invalid and excluded from the analysis.
+are flagged as invalid and excluded from the analysis. The silicon data in `examples/si/` is for demonstration only; its smearing settings are not recommended production parameters.
 
 ## Units
 
@@ -102,3 +110,7 @@ examples/si/    silicon example (QE inputs/outputs, script, notebook)
 ````bash
 pytest -v
 ````
+## Limitations
+
+- Parsers are tested on Quantum ESPRESSO `pw.x` output (non-spin-polarized Si examples); other QE versions or output formats may need adjustments.
+- Convergence analysis currently covers `ecutwfc` only (k-point convergence is on the roadmap).
